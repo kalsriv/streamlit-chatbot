@@ -31,11 +31,19 @@ for message in st.session_state.chat_history:
 #     temperature=0.0,
 # )
 
+# llm = ChatGoogleGenerativeAI(
+#     model="gemini-1.5-flash",
+#     temperature=0.0,
+#     #google_api_key="AIzaSyAUZnIYH_LWMNVndI_DiFNyTGf6e8NeT-I"
+# )
+
+
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
     temperature=0.0,
-    
+    google_api_key="YOUR_KEY"
 )
+
 
 # input box
 user_prompt = st.chat_input("Ask Chatbot...")
