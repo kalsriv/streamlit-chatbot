@@ -3,7 +3,6 @@ import streamlit as st
 from langchain_groq import ChatGroq
 
 
-
 # load the env variables
 load_dotenv()
 
@@ -45,6 +44,7 @@ if user_prompt:
 
     with st.chat_message("assistant"):
         st.markdown(assistant_response)
+
 
 # “I switched my VS Code workspace into a Dev Container because it gives me a clean, Linux‑based 
 # development environment that’s consistent with most production systems. It also lets me use a 
