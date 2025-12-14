@@ -7,7 +7,7 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 load_dotenv()
 # hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+hf_token = st.secrets["HUGGINGFACE_API_KEY"]
 
 
 # Streamlit setup
