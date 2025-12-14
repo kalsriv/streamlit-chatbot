@@ -22,12 +22,13 @@ for message in st.session_state.chat_history:
 # ✅ Hugging Face model (Inference API)
 llm = ChatHuggingFace(
     llm=HuggingFaceEndpoint(
-        repo_id="meta-llama/Llama-3.1-70B-Instruct",
+        repo_id="mistralai/Mistral-7B-Instruct-v0.3",
         max_new_tokens=512,
         temperature=0.2,
         huggingfacehub_api_token=hf_token,
     )
 )
+
 
 # User input
 user_prompt = st.chat_input("Ask Chatbot...")
