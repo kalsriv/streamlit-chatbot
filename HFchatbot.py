@@ -3,6 +3,7 @@ import os
 import streamlit as st
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
+
 # Load env vars
 load_dotenv()
 # hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
@@ -22,21 +23,31 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# ✅ Hugging Face model (Inference API)
-llm = ChatHuggingFace(
-    llm=HuggingFaceEndpoint(
-        #repo_id="mistralai/Mistral-7B-Instruct-v0.3",
-        repo_id="HuggingFaceH4/zephyr-7b-beta",
-        max_new_tokens=512,
-        temperature=0.2,
-        huggingfacehub_api_token=hf_token
+# # ✅ Hugging Face model (Inference API)
+# llm = ChatHuggingFace(
+#     llm=HuggingFaceEndpoint(
+#         #repo_id="mistralai/Mistral-7B-Instruct-v0.3",
+#         repo_id="HuggingFaceH4/zephyr-7b-beta",
+#         max_new_tokens=512,
+#         temperature=0.2,
+#         huggingfacehub_api_token=hf_token
 
-    )
+#     )
+# )
+
+
+llm = HuggingFaceEndpoint(
+    repo_id="HuggingFaceH4/zephyr-7b-beta",  # or mistralai/Mistral-7B-Instruct-v0.3
+    max_new_tokens=512,
+    temperature=0.2,
+    huggingfacehub_api_token=hf_token
 )
+
+response = llm.invoke("You are a helpful assistant.\n\nUser: " + user_prompt)
 
 
 # User input
-user_prompt = st.chat_input("Ask Chatbot...")
+user_prompt = st.chat_input("What is the meaning of life?")
 
 if user_prompt:
     st.chat_message("user").markdown(user_prompt)
