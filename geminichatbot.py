@@ -34,7 +34,7 @@ for message in st.session_state.chat_history:
 # llm = ChatGoogleGenerativeAI(
 #     model="gemini-1.5-flash",
 #     temperature=0.0,
-#     #google_api_key="AIzaSyAUZnIYH_LWMNVndI_DiFNyTGf6e8NeT-I"
+#     #GOOGLE_API_KEY="AIzaSyAUZnIYH_LWMNVndI_DiFNyTGf6e8NeT-I"
 # )
 
 

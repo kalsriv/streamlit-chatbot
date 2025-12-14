@@ -1,0 +1,22 @@
+# Environment variables
+.env
+.env.*
+*.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Streamlit
+.streamlit/
+
+# VS Code
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code Dev Container
+.devcontainer/
+.devcontainer.json

@@ -44,3 +44,5 @@ if user_prompt:
 
     with st.chat_message("assistant"):
         st.markdown(assistant_response)
+
+# “I switched my VS Code workspace into a Dev Container because it gives me a clean, Linux‑based development environment that’s consistent with most production systems. It also lets me use a proper bash shell instead of Windows PowerShell, which simplifies tooling, package management, and dependency isolation. VS Code generated a .devcontainer folder for configuration, and I added it to .gitignore so it doesn’t pollute the repository. This keeps my Git history clean while still letting me work inside a reproducible Linux environment.”
