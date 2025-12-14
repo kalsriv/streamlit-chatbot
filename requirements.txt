@@ -4,3 +4,5 @@ langchain
 langchain-huggingface
 huggingface_hub
 transformers
+langchain-community
+langchain-groq

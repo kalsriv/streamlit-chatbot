@@ -3,6 +3,7 @@ import streamlit as st
 from langchain_groq import ChatGroq
 
 
+
 # load the env variables
 load_dotenv()
 
@@ -23,15 +24,11 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# # llm initiate
-# llm = ChatGroq(
-#     model="llama-3.3-70b-versatile",
-#     temperature=0.0,
-# )
-
-from transformers import AutoModel
-# access_token = "hf_your_api_key_here"
-llm = AutoModel.from_pretrained("private/model", token=access_token)
+# llm initiate
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    temperature=0.0,
+)
 
 # input box
 user_prompt = st.chat_input("Ask Chatbot...")
