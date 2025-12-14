@@ -1,7 +1,6 @@
 streamlit
 python-dotenv
-langchain-community
-langchain-huggingface
-google-generativeai
 langchain
+langchain-huggingface
+huggingface_hub
 transformers
