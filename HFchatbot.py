@@ -36,31 +36,32 @@ for message in st.session_state.chat_history:
 # )
 
 
+# ✅ Hugging Face model (Inference API)
 llm = HuggingFaceEndpoint(
-    repo_id="HuggingFaceH4/zephyr-7b-beta",  # or mistralai/Mistral-7B-Instruct-v0.3
+    repo_id="HuggingFaceH4/zephyr-7b-beta",
     max_new_tokens=512,
     temperature=0.2,
     huggingfacehub_api_token=hf_token
 )
 
-response = llm.invoke("You are a helpful assistant.\n\nUser: " + user_prompt)
-
-
 # User input
-user_prompt = st.chat_input("What is the meaning of life?")
+user_prompt = st.chat_input("Ask Chatbot...")
 
 if user_prompt:
     st.chat_message("user").markdown(user_prompt)
     st.session_state.chat_history.append({"role": "user", "content": user_prompt})
 
-    response = llm.invoke(
-        [
-            {"role": "system", "content": "You are a helpful assistant."},
-            *st.session_state.chat_history
-        ]
-    )
+    # Build prompt from chat history
+    prompt = "You are a helpful assistant.\n"
+    for message in st.session_state.chat_history:
+        role = "User" if message["role"] == "user" else "Assistant"
+        prompt += f"{role}: {message['content']}\n"
+    prompt += "Assistant:"
 
-    assistant_response = response.content
+    # Invoke model
+    response = llm.invoke(prompt)
+
+    assistant_response = response
     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
 
     with st.chat_message("assistant"):
