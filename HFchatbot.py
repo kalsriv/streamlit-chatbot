@@ -25,7 +25,8 @@ for message in st.session_state.chat_history:
 # ✅ Hugging Face model (Inference API)
 llm = ChatHuggingFace(
     llm=HuggingFaceEndpoint(
-        repo_id="mistralai/Mistral-7B-Instruct-v0.3",
+        #repo_id="mistralai/Mistral-7B-Instruct-v0.3",
+        repo_id="HuggingFaceH4/zephyr-7b-beta",
         max_new_tokens=512,
         temperature=0.2,
         huggingfacehub_api_token=hf_token
