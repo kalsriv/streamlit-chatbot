@@ -36,13 +36,25 @@ for message in st.session_state.chat_history:
 # )
 
 
-# ✅ Hugging Face model (Inference API)
+# # ✅ Hugging Face model (Inference API)
+# llm = HuggingFaceEndpoint(
+#     repo_id="bigscience/bloom",
+#     max_new_tokens=512,
+#     temperature=0.2,
+#     huggingfacehub_api_token=hf_token
+# )
+
+
 llm = HuggingFaceEndpoint(
-    repo_id="bigscience/bloom",
-    max_new_tokens=512,
-    temperature=0.2,
-    huggingfacehub_api_token=hf_token
+   repo_id="deepseek-ai/DeepSeek-R1-0528",
+   task="text-generation",
+   max_new_tokens=512,
+   do_sample=False,
+   repetition_penalty=1.03,
+   provider="auto"
 )
+chat_model = ChatHuggingFace(llm=llm)
+
 
 # User input
 user_prompt = st.chat_input("Ask Chatbot...")
@@ -59,7 +71,9 @@ if user_prompt:
     prompt += "Assistant:"
 
     # Invoke model
-    response = llm.invoke(prompt)
+    # response = llm.invoke(prompt)
+    response = chat_model.invoke(prompt)
+    
 
     assistant_response = response
     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
