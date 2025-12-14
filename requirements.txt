@@ -6,4 +6,3 @@ huggingface_hub
 transformers
 langchain-community
 langchain-groq
-text-generation transformers
