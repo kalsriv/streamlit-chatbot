@@ -1,7 +1,7 @@
 streamlit
 python-dotenv
 langchain-community
-langchain-groq
-langchain-google-genai
+langchain-huggingface
 google-generativeai
 langchain
+transformers
