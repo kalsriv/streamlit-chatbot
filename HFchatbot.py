@@ -1,10 +1,11 @@
 from dotenv import load_dotenv
+import os
 import streamlit as st
-from langchain_huggingface import ChatHuggingFace
-from langchain_huggingface import HuggingFaceEndpoint
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
 # Load env vars
 load_dotenv()
+hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # Streamlit setup
 st.set_page_config(page_title="Chatbot", page_icon="🤖", layout="centered")
@@ -20,10 +21,11 @@ for message in st.session_state.chat_history:
 
 # ✅ Hugging Face model (Inference API)
 llm = ChatHuggingFace(
-    endpoint=HuggingFaceEndpoint(
-        repo_id="meta-llama/Llama-3.1-70B-Instruct",   # ✅ choose any HF model
+    llm=HuggingFaceEndpoint(
+        repo_id="meta-llama/Llama-3.1-70B-Instruct",
         max_new_tokens=512,
         temperature=0.2,
+        huggingfacehub_api_token=hf_token,
     )
 )
 
@@ -34,7 +36,6 @@ if user_prompt:
     st.chat_message("user").markdown(user_prompt)
     st.session_state.chat_history.append({"role": "user", "content": user_prompt})
 
-    # ✅ Chat-style invoke
     response = llm.invoke(
         [
             {"role": "system", "content": "You are a helpful assistant."},
