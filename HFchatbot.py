@@ -5,7 +5,10 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
 # Load env vars
 load_dotenv()
-hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+# hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+
 
 # Streamlit setup
 st.set_page_config(page_title="Chatbot", page_icon="🤖", layout="centered")
@@ -24,7 +27,9 @@ llm = ChatHuggingFace(
     llm=HuggingFaceEndpoint(
         repo_id="mistralai/Mistral-7B-Instruct-v0.3",
         max_new_tokens=512,
-        temperature=0.2
+        temperature=0.2,
+        huggingfacehub_api_token=hf_token
+
     )
 )
 
