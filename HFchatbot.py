@@ -46,15 +46,14 @@ for message in st.session_state.chat_history:
 
 
 llm = HuggingFaceEndpoint(
-   repo_id="Writer/clinical-camel-70b-instruct-v2",
+   repo_id="wanglab/ClinicalCamel-70B",
    task="text-generation",
 #    max_new_tokens=512,
    do_sample=False,
    repetition_penalty=1.03,
    provider="auto"
 )
-chat_model = ChatHuggingFace(llm=llm)
-
+# chat_model = ChatHuggingFace(llm=llm)
 
 # User input
 user_prompt = st.chat_input("Ask Chatbot...")
