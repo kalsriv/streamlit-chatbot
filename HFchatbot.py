@@ -46,9 +46,9 @@ for message in st.session_state.chat_history:
 
 
 llm = HuggingFaceEndpoint(
-   repo_id="deepseek-ai/DeepSeek-R1-0528",
+   repo_id="Writer/clinical-camel-70b-instruct-v2",
    task="text-generation",
-   max_new_tokens=512,
+#    max_new_tokens=512,
    do_sample=False,
    repetition_penalty=1.03,
    provider="auto"
@@ -71,8 +71,8 @@ if user_prompt:
     prompt += "Assistant:"
 
     # Invoke model
-    # response = llm.invoke(prompt)
-    response = chat_model.invoke(prompt)
+    response = llm.invoke(prompt)
+    #response = chat_model.invoke(prompt)
     
 
     assistant_response = response
